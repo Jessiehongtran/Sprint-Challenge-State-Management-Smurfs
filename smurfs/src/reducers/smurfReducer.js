@@ -1,6 +1,7 @@
 
 const initialState = {
-    name: "hong"
+    author: "Hong",
+    smurfs: []
 }
 
 export const smurfReducer = (state=initialState, action) => {
