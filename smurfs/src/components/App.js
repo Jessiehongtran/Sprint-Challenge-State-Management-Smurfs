@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import { connect } from 'react-redux';
 import Smurf from './smurf';
-import {getSmurfs} from '../actions/smurfAction'
+import {getSmurfs} from '../actions/smurfAction';
+import Loader from 'react-loader-spinner';
 
 
 class App extends Component {
@@ -19,6 +20,17 @@ class App extends Component {
         <div>Welcome to your state management version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+        <button onClick = {this.props.getSmurfs}> 
+          {this.props.isLoading? 
+            <Loader 
+            type="Oval"
+            color="gray"
+            height="30"
+            width="30"
+            /> :
+            'Discover smurfs'
+          }
+        </button>
         {this.props.smurfs.map(smurf => 
           <Smurf smurf = {smurf}/>
           )}
@@ -32,6 +44,8 @@ const mapStateToProps = state => {
 
   return {
     author: state.author,
+    isLoading: state.isLoading,
+    error: state.error,
     smurfs: state.smurfs,
   }
 }
