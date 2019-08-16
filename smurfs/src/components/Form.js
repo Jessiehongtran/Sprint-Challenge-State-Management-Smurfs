@@ -35,8 +35,10 @@ const SmurfForm =(props) => {
                         placeholder="age"  
                         value={newSmurf.age} 
                         onChange={e => handleChange(e)}/>
+
+                    <button type="Submit">Add</button>
                 </form>
-                <button type="Submit">Add</button>
+                
             </div>
         )
     
