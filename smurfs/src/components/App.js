@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from 'react-redux';
-import Smurf from './smurf';
+import AddedSmurf from './AddedSmurf';
 import {getSmurfs} from '../actions/smurfAction';
 import Loader from 'react-loader-spinner';
 
@@ -31,7 +31,7 @@ class App extends Component {
           }
         </button>
         {this.props.smurfs.map(smurf => 
-          <Smurf smurf = {smurf}/>
+          <AddedSmurf smurf = {smurf}/>
           )}
       </div>
     );

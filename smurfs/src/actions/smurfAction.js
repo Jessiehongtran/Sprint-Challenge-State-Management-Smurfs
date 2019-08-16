@@ -18,3 +18,4 @@ export const getSmurfs = () => {
                 dispatch({type: FETCHING_SMURF_FAILURE, payload: err.response}))
     }
 }
+

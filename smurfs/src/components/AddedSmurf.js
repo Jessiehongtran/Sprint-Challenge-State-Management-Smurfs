@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Smurf = (props) => {
+const AddedSmurf = (props) => {
     console.log('props in Smurf', props)
 
     return (
@@ -14,4 +14,4 @@ const Smurf = (props) => {
     )
 }
 
-export default Smurf
+export default AddedSmurf;
