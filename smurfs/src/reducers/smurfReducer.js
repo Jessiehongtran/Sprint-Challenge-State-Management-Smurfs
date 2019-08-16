@@ -4,7 +4,14 @@ const initialState = {
     author: "Hong",
     isLoading: false,
     error: '',
-    smurfs: []
+    smurfs: [],
+    additionalSmurfs: [
+        {id: 1, name: 'Alex', age: 100, height: '10cm'},
+        {id: 2, name: 'Sara', age: 150, height: '15cm'},
+        {id: 3, name: 'Jay', age: 200, height: '12cm'},
+        {id: 4, name: 'Andi', age: 180, height: '14cm'},
+
+    ]
 }
 
 export const smurfReducer = (state=initialState, action) => {
@@ -27,7 +34,6 @@ export const smurfReducer = (state=initialState, action) => {
         case FETCHING_SMURF_FAILURE:
             return {
                 ...state,
-                isLoading: false,
                 error: action.payload
             }
 
