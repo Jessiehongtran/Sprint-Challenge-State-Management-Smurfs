@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import AddedSmurf from './AddedSmurf';
 import {getSmurfs, addSmurfs} from '../actions/smurfAction';
 import Loader from 'react-loader-spinner';
+import SmurfFormik from './Form'
+
 
 
 
@@ -34,6 +36,10 @@ class App extends Component {
         {this.props.smurfs.map(smurf => 
           <AddedSmurf smurf = {smurf}/>
         )}
+        <SmurfFormik /> 
+
+
+       
 
       </div>
     );
