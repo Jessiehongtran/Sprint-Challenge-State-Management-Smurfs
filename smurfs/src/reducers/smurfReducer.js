@@ -46,8 +46,6 @@ export const smurfReducer = (state=initialState, action) => {
             }
         
         case POSTING_SMURF_SUCCESS:
-
-        //we need to check that we are recieving the smurf as action.payload
             return {
                 ...state,
                 isLoading: false,
