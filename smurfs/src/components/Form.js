@@ -1,9 +1,12 @@
 import React from 'react';
 import {Form, Field, withFormik} from 'formik'
+import { connect } from 'react-redux';
+import { addSmurfs} from '../actions/smurfAction';
 
 class SmurfForm extends React.Component {
     constructor (props) {
         super(props);
+        console.log('props in form', props)
 
     
     }
@@ -30,10 +33,31 @@ const SmurfFormik = withFormik({
             age: values.age || '',
             height: values.height || '',
         }
-    }
+    },
 
+    handleSubmit(values) {
+        console.log('values in handleSubmit', values)
+        
+    }
     
 }
 )(SmurfForm)
 
-export default SmurfFormik
+
+const mapStateToProps = state => {
+    console.log('state in mapStateToProps', state)
+  
+    return {
+      author: state.author,
+      isLoading: state.isLoading,
+      error: state.error,
+      smurfs: state.smurfs,
+      additionalSmurfs: state.additionalSmurfs
+    }
+  }
+  
+  export default connect(
+    mapStateToProps,
+    { addSmurfs}
+  )(SmurfFormik);
+  

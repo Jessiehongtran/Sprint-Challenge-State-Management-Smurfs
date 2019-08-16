@@ -19,8 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux built by {this.props.author}</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
+        <h1>Welcome to SMURFS VILLAGE built by {this.props.author}</h1>
         
         <button onClick = {this.props.getSmurfs}> 
           {this.props.isLoading? 
@@ -36,9 +35,7 @@ class App extends Component {
         {this.props.smurfs.map(smurf => 
           <AddedSmurf smurf = {smurf}/>
         )}
-        <SmurfFormik /> 
-
-
+        <SmurfFormik/> 
        
 
       </div>
