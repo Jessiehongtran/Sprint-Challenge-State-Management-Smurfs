@@ -1,4 +1,5 @@
-import {FETCHING_SMURF_LOADING, FETCHING_SMURF_SUCCESS, FETCHING_SMURF_FAILURE} from '../actions/smurfAction'
+import {FETCHING_SMURF_LOADING, FETCHING_SMURF_SUCCESS, FETCHING_SMURF_FAILURE,
+    POSTING_SMURF_LOADING, POSTING_SMURF_SUCCESS, POSTING_SMURF_FAILURE} from '../actions/smurfAction'
 
 const initialState = {
     author: "Hong",
@@ -6,10 +7,10 @@ const initialState = {
     error: '',
     smurfs: [],
     additionalSmurfs: [
-        {id: 1, name: 'Alex', age: 100, height: '10cm'},
-        {id: 2, name: 'Sara', age: 150, height: '15cm'},
-        {id: 3, name: 'Jay', age: 200, height: '12cm'},
-        {id: 4, name: 'Andi', age: 180, height: '14cm'},
+        {name: 'Alex', age: 100, height: '10cm'},
+        {name: 'Sara', age: 150, height: '15cm'},
+        {name: 'Jay', age: 200, height: '12cm'},
+        {name: 'Andi', age: 180, height: '14cm'},
 
     ]
 }
@@ -36,7 +37,30 @@ export const smurfReducer = (state=initialState, action) => {
                 ...state,
                 error: action.payload
             }
+        
+        case POSTING_SMURF_LOADING:
+            return {
+                ...state,
+                isLoading: true,
+                error: ''
+            }
+        
+        case POSTING_SMURF_SUCCESS:
 
+        //we need to check that we are recieving the smurf as action.payload
+            return {
+                ...state,
+                isLoading: false,
+                error: '',
+                smurfs: [...state.smurfs, action.payload]
+                    
+            }
+        
+        case POSTING_SMURF_FAILURE:
+            return {
+                ...state,
+                error: action.payload
+            }
 
         default:
             return state
