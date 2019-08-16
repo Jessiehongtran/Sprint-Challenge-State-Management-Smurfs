@@ -5,6 +5,7 @@ import AddedSmurf from './AddedSmurf';
 import {getSmurfs, addSmurfs} from '../actions/smurfAction';
 import Loader from 'react-loader-spinner';
 import SmurfFormik from './Form'
+import SmurfForm from './Form'
 
 
 
@@ -13,7 +14,14 @@ class App extends Component {
   constructor(props) {
     super();
     console.log('props in App', props)
+    this.state = {
+      newSmurf: []
+    }
+    
+  }
 
+  componentDidMount(){
+    this.setState()
   }
   
   render() {
@@ -35,8 +43,16 @@ class App extends Component {
         {this.props.smurfs.map(smurf => 
           <AddedSmurf smurf = {smurf}/>
         )}
-        <SmurfFormik/> 
-       
+        {/* <SmurfFormik/>  */}
+        <SmurfForm addSmurfs={this.props.addSmurfs}/>
+          
+        {/* <form onSubmit={this.props.addSmurfs}>
+          <input type="text" name="name" value= {this.newSmurf.name} />
+          <input type="text" name="age" value= {this.newSmurf.age} />
+          <input type="text" name="name" value= {this.newSmurf.name} />
+          <button>Add</button>
+        </form> */}
+
 
       </div>
     );

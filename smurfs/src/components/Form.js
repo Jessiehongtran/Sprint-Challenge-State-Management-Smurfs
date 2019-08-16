@@ -4,60 +4,36 @@ import { connect } from 'react-redux';
 import { addSmurfs} from '../actions/smurfAction';
 
 class SmurfForm extends React.Component {
-    constructor (props) {
+    constructor(props){
         super(props);
-        console.log('props in form', props)
-
+        console.log('props in SmurfForm', props)
+        this.state= {
+            newSmurf: {}
+        }
+    }
     
+    handleChange = e => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    handleSubmit = e => {
+        e.preventDefault();
+        console.log('newSmurf',this.state.newSmurf)
+        // this.props.addSmurfs(this.state.newSmurf)
     }
 
 
     render(){
-        return (
-           <div>
-                <Form>
-                    <Field type="text" name="name" placeholder="name"/>
-                    <Field type="text" name="age" placeholder="age"/>
-                    <Field type="text" name="height" placeholder="height"/>
-                    <button>Add</button>
-                </Form>
-           </div> 
+        return(
+            <div>
+                <form onClick={this.handleSubmit}>
+                    <input type="text" name="name" placeholder="name" value={this.state.newSmurf.name} onChange={this.handleChange}/>
+                    <input type="text" name="age" placeholder="age"  value={this.state.newSmurf.age} onChange={this.handleChange}/>
+                </form>
+                <button>Add</button>
+            </div>
         )
     }
 }
 
-const SmurfFormik = withFormik({
-    mapPropsToValues(values){
-        return {
-            name: values.name || '',
-            age: values.age || '',
-            height: values.height || '',
-        }
-    },
-
-    handleSubmit(values) {
-        console.log('values in handleSubmit', values)
-        
-    }
-    
-}
-)(SmurfForm)
-
-
-const mapStateToProps = state => {
-    console.log('state in mapStateToProps', state)
-  
-    return {
-      author: state.author,
-      isLoading: state.isLoading,
-      error: state.error,
-      smurfs: state.smurfs,
-      additionalSmurfs: state.additionalSmurfs
-    }
-  }
-  
-  export default connect(
-    mapStateToProps,
-    { addSmurfs}
-  )(SmurfFormik);
-  
+export default SmurfForm;
