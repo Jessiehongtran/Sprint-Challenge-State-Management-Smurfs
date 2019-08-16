@@ -1,39 +1,45 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Form, Field, withFormik} from 'formik'
 import { connect } from 'react-redux';
 import { addSmurfs} from '../actions/smurfAction';
 
-class SmurfForm extends React.Component {
-    constructor(props){
-        super(props);
-        console.log('props in SmurfForm', props)
-        this.state= {
-            newSmurf: {}
-        }
-    }
+const SmurfForm =(props) => {
+
+    // console.log('props in SmurfForm', props)
+    const [newSmurf, setNewSmurf] = useState({name: "", age: ""})
     
-    handleChange = e => {
-        this.setState({[e.target.name]: e.target.value})
+    const handleChange = e => {
+        setNewSmurf({...newSmurf, [e.target.name]: e.target.value})
     }
 
-    handleSubmit = e => {
+    const handleSubmit = e => {
         e.preventDefault();
-        console.log('newSmurf',this.state.newSmurf)
-        // this.props.addSmurfs(this.state.newSmurf)
+        console.log('newSmurf', newSmurf)
+        // props.addSmurfs(newSmurf)
+       
     }
 
-
-    render(){
-        return(
+    return(
+            
             <div>
-                <form onClick={this.handleSubmit}>
-                    <input type="text" name="name" placeholder="name" value={this.state.newSmurf.name} onChange={this.handleChange}/>
-                    <input type="text" name="age" placeholder="age"  value={this.state.newSmurf.age} onChange={this.handleChange}/>
+                <form onSubmit={e => handleSubmit(e)}>
+                    <input 
+                        type="text" 
+                        name="name" 
+                        placeholder="name" 
+                        value={newSmurf.name} 
+                        onChange={e => handleChange(e)} />
+                    <input 
+                        type="text" 
+                        name="age" 
+                        placeholder="age"  
+                        value={newSmurf.age} 
+                        onChange={e => handleChange(e)}/>
                 </form>
-                <button>Add</button>
+                <button type="Submit">Add</button>
             </div>
         )
-    }
+    
 }
 
 export default SmurfForm;
