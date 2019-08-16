@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
+import { connect } from 'react-redux';
+
+
 class App extends Component {
+  constructor(props) {
+    super();
+    console.log('props in App', props)
+
+  }
+  
   render() {
     return (
       <div className="App">
@@ -13,4 +22,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  console.log('state in mapStateToProps', state)
+
+  return {
+    name: state.name
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  {}
+)(App);

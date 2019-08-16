@@ -9,7 +9,7 @@ import {smurfReducer} from './reducers/smurfReducer'
 
 
 
-export const store = createStore(smurfReducer, applyMiddleware())
+export const store = createStore(smurfReducer, applyMiddleware(thunk))
 console.log('store', store)
 
 ReactDOM.render(
