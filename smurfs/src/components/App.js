@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import AddedSmurf from './AddedSmurf';
 import {getSmurfs, addSmurfs} from '../actions/smurfAction';
 import Loader from 'react-loader-spinner';
-import AdditionalSmurf from './AdditionalSmurf'
+
 
 
 class App extends Component {
@@ -34,10 +34,6 @@ class App extends Component {
         {this.props.smurfs.map(smurf => 
           <AddedSmurf smurf = {smurf}/>
         )}
-
-        {/* {this.props.additionalSmurfs.map (smurf =>
-          <AdditionalSmurf smurf = {smurf} addSmurfs = {this.props.addSmurfs}/>
-          )} */}
 
       </div>
     );
