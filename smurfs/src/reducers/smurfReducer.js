@@ -1,4 +1,4 @@
-import {FETCHING_SMURF_LOADING} from '../actions/smurfAction'
+import {FETCHING_SMURF_LOADING, FETCHING_SMURF_SUCCESS} from '../actions/smurfAction'
 
 const initialState = {
     author: "Hong",
@@ -14,6 +14,14 @@ export const smurfReducer = (state=initialState, action) => {
                 ...state,
                 isLoading: true,
                 error: ''
+            }
+
+        case FETCHING_SMURF_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                error: '',
+                smurfs: action.payload,
             }
 
 
